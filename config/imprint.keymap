@@ -30,45 +30,56 @@
         };
     };
 
+    behaviors {
+        Bck_Del: Bck_Del {
+            compatible = "zmk,behavior-mod-morph";
+            label = "BCK_DEL";
+            bindings = <&kp BACKSPACE>, <&kp DELETE>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
             bindings = <
-&none       &none      &none     &none     &none             &none                             &none          &none            &none           &none           &none         &none
-&kp GRAVE   &kp N1     &kp N2    &kp N3    &kp N4            &kp N5                            &kp N6         &kp N7           &kp N8          &kp N9          &kp N0        &kp RIGHT_GUI
-&kp TAB     &kp Q      &kp W     &kp E     &kp R             &kp T                             &kp Y          &kp U            &kp I           &kp O           &kp P         &kp BSLH
-&kp ESCAPE  &kp A      &kp S     &kp D     &kp F             &kp G                             &kp H          &kp J            &kp K           &kp L           &kp SEMI      &kp SQT
-&kp LSHFT   &kp Z      &kp X     &kp C     &kp V             &kp B                             &kp N          &kp M            &kp COMMA       &kp DOT         &kp FSLH      &kp RSHFT
-&kp LCTRL   &kp LCTRL  &kp LGUI  &kp LALT  &trans                                                             &trans           &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT_ARROW
-                                           &kp SPACE         &kp LEFT_CONTROL  &kp LEFT_ALT    &kp ENTER      &kp RIGHT_SHIFT  &kp RCTRL
-                                           &kp LEFT_COMMAND  &mo 3             &mo 4           &kp BACKSPACE  &mo 4            &mo 3
+&none       &none     &none         &none   &none             &none                             &none      &none            &none           &none           &none         &none
+&kp GRAVE   &kp N1    &kp N2        &kp N3  &kp N4            &kp N5                            &kp N6     &kp N7           &kp N8          &kp N9          &kp N0        &kp RIGHT_GUI
+&kp TAB     &kp Q     &kp W         &kp E   &kp R             &kp T                             &kp Y      &kp U            &kp I           &kp O           &kp P         &kp BSLH
+&kp ESCAPE  &kp A     &kp S         &kp D   &kp F             &kp G                             &kp H      &kp J            &kp K           &kp L           &kp SEMI      &kp SQT
+&kp LSHFT   &kp Z     &kp X         &kp C   &kp V             &kp B                             &kp N      &kp M            &kp COMMA       &kp DOT         &kp FSLH      &kp RSHFT
+&kp LCTRL   &kp LCMD  &kp LEFT_ALT  &tog 2  &trans                                                         &trans           &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT_ARROW
+                                            &kp SPACE         &kp LEFT_CONTROL  &kp LEFT_ALT    &kp ENTER  &kp RIGHT_SHIFT  &kp RCTRL
+                                            &kp LEFT_COMMAND  &mo 3             &mo 4           &Bck_Del   &mo 4            &mo 3
             >;
         };
 
         Mac {
             bindings = <
-&none       &none             &none         &none         &none             &none                             &none          &none            &none           &none           &none         &none
-&kp GRAVE   &kp N1            &kp N2        &kp N3        &kp N4            &kp N5                            &kp N6         &kp N7           &kp N8          &kp N9          &kp N0        &LockMacOS
-&kp TAB     &kp Q             &kp W         &kp E         &kp R             &kp T                             &kp Y          &kp U            &kp I           &kp O           &kp P         &kp BSLH
-&kp ESCAPE  &kp A             &kp S         &kp D         &kp F             &kp G                             &kp H          &kp J            &kp K           &kp L           &kp SEMI      &kp SQT
-&kp LSHFT   &kp Z             &kp X         &kp C         &kp V             &kp B                             &kp N          &kp M            &kp COMMA       &kp DOT         &kp FSLH      &kp RSHFT
-&kp LCTRL   &kp LEFT_CONTROL  &kp LEFT_ALT  &kp LEFT_GUI  &trans                                                             &trans           &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT_ARROW
-                                                          &kp SPACE         &kp LEFT_COMMAND  &kp LEFT_ALT    &kp ENTER      &kp RIGHT_SHIFT  &kp RCTRL
-                                                          &kp LEFT_CONTROL  &mo 3             &mo 4           &kp BACKSPACE  &mo 4            &mo 3
+&none       &none         &none         &none   &none             &none                             &none      &none            &none           &none           &none         &none
+&kp GRAVE   &kp N1        &kp N2        &kp N3  &kp N4            &kp N5                            &kp N6     &kp N7           &kp N8          &kp N9          &kp N0        &LockMacOS
+&kp TAB     &kp Q         &kp W         &kp E   &kp R             &kp T                             &kp Y      &kp U            &kp I           &kp O           &kp P         &kp BSLH
+&kp ESCAPE  &kp A         &kp S         &kp D   &kp F             &kp G                             &kp H      &kp J            &kp K           &kp L           &kp SEMI      &kp SQT
+&kp LSHFT   &kp Z         &kp X         &kp C   &kp V             &kp B                             &kp N      &kp M            &kp COMMA       &kp DOT         &kp FSLH      &kp RSHFT
+&kp LCTRL   &kp LEFT_ALT  &kp LEFT_GUI  &tog 2  &trans                                                         &trans           &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT_ARROW
+                                                &kp SPACE         &kp LEFT_COMMAND  &kp LEFT_ALT    &kp ENTER  &kp RIGHT_SHIFT  &kp RCTRL
+                                                &kp LEFT_CONTROL  &mo 3             &mo 4           &Bck_Del   &mo 4            &mo 3
             >;
         };
 
         Gaming {
             bindings = <
-&none       &none           &none     &none     &none      &none                             &none          &none       &none           &none           &none         &none
-&kp GRAVE   &kp N1          &kp N2    &kp N3    &kp N4     &kp N5                            &kp N6         &kp N7      &kp N8          &kp N9          &kp N0        &kp RGUI
-&kp TAB     &kp T           &kp Q     &kp W     &kp E      &kp R                             &kp Y          &kp U       &kp I           &kp O           &kp P         &kp BSLH
-&kp ESCAPE  &kp G           &kp A     &kp S     &kp D      &kp F                             &kp H          &kp J       &kp K           &kp L           &kp SEMI      &kp SQT
-&kp Z       &kp LEFT_SHIFT  &kp X     &kp C     &kp C      &kp B                             &kp N          &kp M       &kp COMMA       &kp DOT         &kp FSLH      &kp RSHFT
-&tog 2      &trans          &kp LGUI  &kp LALT  &trans                                                      &trans      &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT_ARROW
-                                                &kp SPACE  &kp LEFT_CONTROL  &kp LEFT_ALT    &kp ENTER      &kp RSHIFT  &kp RCTRL
-                                                &kp V      &mo 4             &mo 3           &kp BACKSPACE  &mo 4       &mo 3
+&none       &none           &none         &none   &none      &none                             &none      &none       &none           &none           &none         &none
+&kp GRAVE   &kp N1          &kp N2        &kp N3  &kp N4     &kp N5                            &kp N6     &kp N7      &kp N8          &kp N9          &kp N0        &kp RGUI
+&kp TAB     &kp T           &kp Q         &kp W   &kp E      &kp R                             &kp Y      &kp U       &kp I           &kp O           &kp P         &kp BSLH
+&kp ESCAPE  &kp G           &kp A         &kp S   &kp D      &kp F                             &kp H      &kp J       &kp K           &kp L           &kp SEMI      &kp SQT
+&kp Z       &kp LEFT_SHIFT  &kp X         &kp C   &kp C      &kp B                             &kp N      &kp M       &kp COMMA       &kp DOT         &kp FSLH      &kp RSHFT
+&kp LCTRL   &kp LEFT_GUI    &kp LEFT_ALT  &tog 2  &trans                                                  &trans      &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT_ARROW
+                                                  &kp SPACE  &kp LEFT_CONTROL  &kp LEFT_ALT    &kp ENTER  &kp RSHIFT  &kp RCTRL
+                                                  &kp V      &mo 4             &mo 3           &Bck_Del   &mo 4       &mo 3
             >;
         };
 
@@ -92,9 +103,9 @@
 &sys_reset      &kp EXCLAMATION  &kp AT_SIGN  &kp HASH      &kp DOLLAR    &kp PERCENT            &kp CARET             &kp AMPERSAND          &kp ASTERISK      &kp MINUS          &kp EQUAL  &sys_reset
 &bootloader     &kp MINUS        &kp UNDER    &kp EQUAL     &kp PLUS      &kp TILDE              &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &none      &bootloader
 &kp LEFT_SHIFT  &none            &none        &none         &none         &kp GRAVE              &kp LEFT_BRACE        &kp RIGHT_BRACE        &none             &none              &none      &kp RIGHT_SHIFT
-&tog 1          &tog 2           &none        &to 0         &none                                                      &none                  &to 0             &none              &tog 2     &tog 1
-                                                            &none         &none         &none    &none                 &none                  &none
-                                                            &none         &none         &none    &none                 &none                  &none
+&to 0           &to 1            &to 2        &to 0         &none                                                      &none                  &to 0             &none              &tog 2     &tog 1
+                                                            &kp ENTER     &none         &none    &kp SPACE             &none                  &none
+                                                            &Bck_Del      &none         &none    &none                 &none                  &none
             >;
         };
     };
@@ -110,10 +121,10 @@
 
 &trackball_central_listener {
     input-processors =
-        // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,,,,,,,,,,
+        // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),,,,,,,,,,,,,,,,,,,,,,,
         <&zip_xy_scaler 1 3>,
-        // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,,,,,,,,,,,,
+        // make this trackball output scrolling events by default instead of cursor movement,,,,,,,,,,,,,,,,,,,,,,,
         <&zip_xy_to_scroll_mapper>,
-        // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,,,,,,,,,,,,,,,,,,,,,,
+        // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,,,,,,,,,,,,,,,,,,,,,,,
         <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
 };
