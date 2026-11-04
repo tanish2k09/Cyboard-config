@@ -140,18 +140,45 @@
 &trans           &trans           &trans           &trans           &trans           &trans           &trans           &trans           &trans           &trans           &trans           &trans
 &trans           &trans           &trans           &mmv MOVE_UP     &msc SCRL_UP     &trans           &trans           &trans           &trans           &trans           &trans           &trans
 &trans           &trans           &mmv MOVE_LEFT   &mmv MOVE_DOWN   &mmv MOVE_RIGHT  &trans           &mkp MB4         &mkp LCLK        &mkp MCLK        &mkp RCLK        &mkp MB5         &trans
-&trans           &trans           &trans           &trans           &msc SCRL_DOWN   &trans           &trans           &trans           &trans           &trans           &trans           &trans
-&trans           &trans           &trans           &trans           &trans                                             &trans           &trans           &trans           &trans           &trans
+&mo 7            &trans           &trans           &trans           &msc SCRL_DOWN   &trans           &trans           &trans           &trans           &trans           &trans           &trans
+&mo 8            &trans           &trans           &trans           &trans                                             &trans           &trans           &trans           &trans           &trans
                                                                     &trans           &trans           &trans           &trans           &trans           &trans
                                                                     &trans           &trans           &trans           &trans           &trans           &trans
+            
+>;
+        };
+
+        MouseFast {
+            display-name = "Mouse Fast";
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
 
-        extra_2 {
+        MousePrecise {
+            display-name = "Mouse Precise";
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans
+            >;
+        };
+
+        extra_4 {
             status = "reserved";
         };
 
-        extra_3 {
+        extra_5 {
             status = "reserved";
         };
     };
@@ -194,4 +221,16 @@
         <&zip_xy_to_scroll_mapper>,
         // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,,,,,,,,,,,,,,,,,,,,,,,,
         <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
+};
+
+// Mouse speed modifiers: hold Shift (fast) or Ctrl (precise) while on the Mouse layer.
+&mmv_input_listener {
+    mouse_fast {
+        layers = <7>;
+        input-processors = <&zip_xy_scaler 5 2>;
+    };
+    mouse_precise {
+        layers = <8>;
+        input-processors = <&zip_xy_scaler 1 3>;
+    };
 };
